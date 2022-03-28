@@ -28,7 +28,7 @@ const routes = {
     dest: "build/js",
   },
   html: {
-    src: "index.html",
+    src: "src/*.html",
     dest: "build/",
   },
 };
