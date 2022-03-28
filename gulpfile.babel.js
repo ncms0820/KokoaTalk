@@ -8,6 +8,7 @@ import image from "gulp-image";
 import bro from "gulp-bro";
 import babelify from "babelify";
 import ws from "gulp-webserver";
+import ghPages from "gulp-gh-pages";
 
 const sass = gulpSass(dartSass);
 
@@ -34,7 +35,7 @@ const routes = {
 
 const webserver = () => gulp.src("dist").pipe(ws({ livereload: true, open: true }));
 
-const html = async() => {
+const html = async () => {
   gulp.src(routes.html.src).pipe(gulp.dest(routes.html.dest));
 };
 
@@ -62,6 +63,8 @@ const js = () =>
     )
     .pipe(gulp.dest(routes.js.dest));
 
+const deployer = () => gulp.src("build/**/*").pipe(ghPages());
+
 const watch = () => {
   gulp.watch(routes.css.watch, styles);
   gulp.watch(routes.img.src, img);
@@ -79,3 +82,4 @@ const live = gulp.parallel([watch, webserver]);
 
 export const build = gulp.series([prepare, assets]);
 export const dev = gulp.series([build, live]);
+export const deploy = gulp.series([build, deployer, clean]);
