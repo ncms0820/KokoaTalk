@@ -16,24 +16,24 @@ const routes = {
   css: {
     watch: "src/scss/*",
     src: "src/scss/styles.scss",
-    dest: "dist/css",
+    dest: "build/css",
   },
   img: {
     src: "src/img/*",
-    dest: "dist/img",
+    dest: "build/img",
   },
   js: {
     watch: "src/js/**/*.js",
     src: "src/js/main.js",
-    dest: "dist/js",
+    dest: "build/js",
   },
   html: {
     src: "index.html",
-    dest: "dist/",
+    dest: "build/",
   },
 };
 
-const webserver = () => gulp.src("dist").pipe(ws({ livereload: true, open: true }));
+const webserver = () => gulp.src("build").pipe(ws({ livereload: true, open: true }));
 
 const html = async () => {
   gulp.src(routes.html.src).pipe(gulp.dest(routes.html.dest));
@@ -72,7 +72,7 @@ const watch = () => {
   gulp.watch(routes.html.src, html);
 };
 
-const clean = () => del(["dist/"]);
+const clean = () => del(["build/"]);
 
 const prepare = gulp.series([clean, img]);
 
