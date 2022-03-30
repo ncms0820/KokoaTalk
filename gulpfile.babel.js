@@ -29,7 +29,7 @@ const routes = {
     dest: "dist/js",
   },
   html: {
-    src: "src/*.html",
+    src: "src/**/*.html",
     dest: "dist",
   },
 };
