@@ -1,5 +1,40 @@
-@mixin sexyTitle {
-  color: blue;
-  font-size: 30px;
-  margin-bottom: 12px;
+@mixin profile-img($image) {
+  margin-left: 10px;
+  margin-right: 15px;
+  width: 20%;
+  height: 90%;
+  border-radius: 30px;
+  background-image: $image;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@mixin card($image) {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  height: 75%;
+  & > div:first-child {
+    margin-left: 10px;
+    width: 20%;
+    height: 90%;
+    border-radius: 30px;
+    background-image: $image;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  & > div:nth-child(2) {
+    margin-left: 15px;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    h4 {
+      font-size: 1rem;
+    }
+    h6 {
+      font-size: 0.7rem;
+      color: gray;
+    }
+  }
 }
